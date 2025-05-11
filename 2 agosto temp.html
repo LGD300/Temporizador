@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Temporizador hasta 2 de agosto</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f0f8ff;
+      text-align: center;
+      padding: 50px;
+    }
+    h1 {
+      color: #333;
+    }
+    #countdown {
+      font-size: 2em;
+      color: #0066cc;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Cuenta regresiva hasta el 2 de agosto (Panamá)</h1>
+  <div id="countdown">Cargando...</div>
+
+  <script>
+    // Fecha objetivo: 2 de agosto a medianoche (zona horaria de Panamá)
+    const targetDate = new Date("2025-08-02T00:00:00-05:00"); // Panamá está en UTC-5
+
+    function updateCountdown() {
+      const now = new Date();
+      const diff = targetDate - now;
+
+      if (diff <= 0) {
+        document.getElementById("countdown").textContent = "¡Llegó el 2 de agosto!";
+        return;
+      }
+
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+      const minutes = Math.floor((diff / (1000 * 60)) % 60);
+      const seconds = Math.floor((diff / 1000) % 60);
+
+      document.getElementById("countdown").textContent =
+        `${days} días, ${hours} horas, ${minutes} minutos, ${seconds} segundos`;
+    }
+
+    updateCountdown(); // Llamar inmediatamente
+    setInterval(updateCountdown, 1000); // Actualizar cada segundo
+  </script>
+</body>
+</html>
